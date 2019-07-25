@@ -1,0 +1,36 @@
+{
+  "name": "autotest_pnvteam1",
+  "version": "1.0.0",
+  "description": "- Install npm *npm install npm -g*\r - Install node.js *[1]*\r - run npm init\r - run npm install nightwatch –save\r - run npm install iedriver\r - run npm install geckodriver\r - run npm install chromedriver\r - run npm install @rpii/nightwatch-html-reporter",
+  "main": "globals.js",
+  "scripts": {
+    "lint": "eslint .",
+    "debug": "node --inspect-brk node_modules/nightwatch/bin/runner.js --env chrome",
+    "start-server": "./node_modules/.bin/light-server -s . -p 500 -w ./reports/*.html",
+    "test": "node nightwatch -e chrome tests/nightwatch",
+    "galen": "galen",
+    "test-galen": "galen test tests/galen/post/post.test.js --htmlreport reports/galen --parallel-tests 3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.9.0",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.1.2",
+    "light-server": "^2.6.2",
+    "nightwatch-html-reporter": "^2.0.6",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vihoang0706/autoTest_PNVTeam1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vihoang0706/autoTest_PNVTeam1/issues"
+  },
+  "homepage": "https://github.com/vihoang0706/autoTest_PNVTeam1#readme"
+}

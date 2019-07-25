@@ -1,0 +1,111 @@
+@import ../galen-extras/galen-extras-rules.gspec 
+
+@objects
+    help_button             #contextual-help-link
+    title                   .wrap h1
+    media_upload_form       #file-form
+        upload_input            #async-upload
+        upload_button           #html-upload
+        multi_file_link         p[class="upload-html-bypass hide-if-no-js"] a
+        upload_file_size        p.max-upload-size
+
+@set
+    common_font_size                13px
+    upload_button_border_color      rgb(0, 115, 170) rgb(0, 103, 153) rgb(0, 103, 153)
+
+@groups
+    form_elements media_upload_form.upload_button, media_upload_form.multi_file_link, media_upload_form.upload_file_size
+
+= Skeleton =
+    @on mobile, tablet
+        | title, media_upload_form are aligned vertically above each other with 20px margin
+
+        title, media_upload_form:
+            inside screen 12px right, 10px left
+
+        help_button:
+            above title
+            height 29px
+            inside screen 46px top, 21px right, >= 10px left
+            width 76px
+
+        title:
+            height 42px
+
+    @on desktop
+        | title, media_upload_form are aligned vertically above each other with 20px margin
+
+        title, media_upload_form:
+            inside screen 20px right
+
+        help_button:
+            above title 48px
+            height 28px
+            inside screen 32px top, 21px right
+            width 74px
+
+        title:
+            height 42px
+
+= media_upload_form elements =
+    @on mobile, tablet
+        media_upload_form.upload_file_size:
+            below media_upload_form.multi_file_link 14px
+            centered horizontally inside media_upload_form 1px
+            height 19px
+            inside media_upload_form 0px left right bottom
+
+        media_upload_form.upload_button:
+            height 33px
+            inside media_upload_form 0px top, >= 0px right
+            right-of media_upload_form.upload_input 4px
+            width 74px
+
+        media_upload_form.upload_input:
+            above media_upload_form.multi_file_link 38px
+            height 30px
+            inside media_upload_form 2px top, 1px left
+
+    @on mobile
+         media_upload_form.multi_file_link:
+            below media_upload_form.upload_button 37px
+            height 36px
+            inside media_upload_form 13px right, 0px left
+
+    @on tablet
+        media_upload_form.multi_file_link:
+            below media_upload_form.upload_button 37px
+            height 17px
+            inside media_upload_form >= 0px left right
+
+    @on desktop
+        | media_upload_form.upload_input, media_upload_form.upload_button are aligned horizontally next to each other with 4px margin
+
+        media_upload_form.upload_file_size:
+            below media_upload_form.multi_file_link 14px
+            centered horizontally inside media_upload_form 1px
+            height 19px
+            inside media_upload_form 0px left right bottom
+
+        media_upload_form.multi_file_link:
+            visible 
+            below media_upload_form.upload_input 15px
+            height 36px
+            inside media_upload_form 31px right, 0px left
+
+        media_upload_form.upload_input, media_upload_form.upload_button:
+            height 28px
+
+        media_upload_form.upload_button:
+            above media_upload_form.multi_file_link 15px
+            inside media_upload_form 1px top, >= 0px right
+            width 63px
+            css border-color is "${upload_button_border_color}" 
+
+        media_upload_form.upload_input:
+            inside media_upload_form 1px top left
+            aligned horizontally all media_upload_form.upload_button 
+            css font-size is "14px"
+        
+        &form_elements: 
+            css font-size is "${common_font_size}"

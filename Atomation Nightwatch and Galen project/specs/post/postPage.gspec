@@ -1,0 +1,197 @@
+@import ../galen-extras/galen-extras-rules.gspec 
+
+@objects
+    toolbar                    .edit-post-header-toolbar
+        insert_button               .editor-inserter button
+        undo_button                 .editor-history__undo
+        redo_button                 .editor-history__redo
+        table_content_button        .table-of-contents button
+        block_navigation_button     .editor-block-navigation
+    editor_body                 div.edit-post-text-editor__body
+        title_label                 .editor-post-title__block div label
+        title_textfield             #post-title-0
+        content_label               label
+        content_textfield           .editor-post-text-editor
+    header__settings            .edit-post-header__settings
+        preview_button              .editor-post-preview
+        publish_button              .editor-post-publish-panel__toggle
+        setting_button              button[aria-label='Settings']
+            icon_setting                .dashicons-admin-generic
+        show_more_tool_button       button[aria-label='Show more tools & options']
+    sidebar                     .edit-post-sidebar
+    panel_tab                   .edit-post-sidebar__panel-tabs
+        tab_item-*                   ul li
+    components_panel_item-*     .components-panel__body h2 button   
+
+= Skeleton =
+    @on mobile, tablet
+        | editor_body.title_textfield, editor_body.content_textfield are aligned vertically above each other with 9px margin
+
+        toolbar:
+            above editor_body.content_label
+            inside screen 50px top, 2px left
+            left-of header__settings
+            width 36px
+
+        editor_body.title_textfield:
+            height 84px
+            inside editor_body 0px left right, 45px top
+
+        header__settings:
+            inside screen 50px top, 3px right
+
+        toolbar, header__settings:
+            height 47px
+
+        editor_body.content_label:
+            inside screen 15px left, >= 2px right
+
+        editor_body.title_textfield, editor_body.content_textfield:
+            centered horizontally inside editor_body 1px
+
+        editor_body.content_textfield:
+            inside editor_body 0px left right bottom
+
+        header__settings.show_more_tool_button:
+            height 36px
+            inside screen 2px right, 55px top
+            right-of toolbar
+            width 24px
+
+    @on desktop
+        toolbar:
+            above editor_body.content_label
+            inside screen 40px top, 168px left
+            left-of header__settings
+
+        header__settings:
+            above sidebar 9px
+            inside screen 40px top, 9px right
+    
+        toolbar, header__settings:
+            height 39px
+        sidebar:
+            inside screen 0px right bottom
+            right-of editor_body 17px
+        editor_body.title_label, editor_body:
+            inside screen >= 0px bottom
+
+        editor_body.title_label:
+            below toolbar
+            left-of editor_body 0px
+
+        header__settings.show_more_tool_button:
+            above sidebar 11px
+            height 36px
+            inside screen 41px top, 8px right
+            right-of toolbar
+            width 28px
+
+= Toolbar elements =
+    @on mobile, tablet
+        toolbar.insert_button:
+            centered horizontally inside toolbar 1px
+            inside toolbar 6px bottom, 5px top, 0px left right
+
+    @on desktop
+        | toolbar.insert_button, toolbar.undo_button, toolbar.redo_button, toolbar.table_content_button, toolbar.block_navigation_button are aligned horizontally next to each other with 0px margin
+
+        toolbar.redo_button:
+            centered horizontally inside toolbar 1px
+
+        toolbar.insert_button:
+            inside toolbar 2px bottom, 1px top, 0px left
+
+        toolbar.undo_button, toolbar.redo_button, toolbar.table_content_button:
+            inside toolbar 2px bottom, 1px top
+
+        toolbar.block_navigation_button:
+            inside toolbar 2px bottom, 1px top, 0px right
+
+= Header__settings elements =
+    @on mobile, tablet
+        | header__settings.preview_button, header__settings.publish_button are aligned horizontally next to each other with 5px margin
+
+        header__settings.preview_button:
+            inside header__settings 7px top bottom, 2px left
+            width 56px
+
+        header__settings.setting_button.icon_setting:
+            centered horizontally inside header__settings.setting_button 1px
+            inside header__settings.setting_button 8px top left right bottom
+
+        header__settings.publish_button:
+            inside header__settings 7px top bottom
+            left-of header__settings.setting_button 2px
+            width 63px
+
+        header__settings.setting_button:
+            inside header__settings 6px bottom, 5px top, 19px right
+
+        header__settings.preview_button, header__settings.publish_button:
+            height 33px
+            
+    @on desktop
+        | header__settings.preview_button, header__settings.publish_button are aligned horizontally next to each other with 7px margin
+        header__settings.preview_button:
+            inside header__settings 12px left, 3px top bottom
+            width 70px
+
+        header__settings.publish_button:
+            inside header__settings 3px top bottom
+            left-of header__settings.setting_button 12px
+            width 77px
+
+        header__settings.setting_button.icon_setting:
+            centered horizontally inside header__settings.setting_button 1px
+            inside header__settings.setting_button 8px top left right bottom
+
+        header__settings.setting_button:
+            inside header__settings 2px bottom, 1px top, 31px right
+
+        header__settings.preview_button, header__settings.publish_button:
+            height 33px
+
+= Editor_body elements =
+    @on desktop
+        | editor_body.title_textfield, editor_body.content_textfield are aligned vertically above each other with 4px margin
+
+        editor_body.title_textfield:
+            height 84px
+            inside editor_body 40px top, 0px left right
+
+        editor_body.title_textfield, editor_body.content_textfield:
+            centered horizontally inside editor_body 1px
+
+        editor_body.content_textfield:
+            inside editor_body 0px left right bottom
+
+= Sidebar elements =
+    @on desktop
+        | panel_tab, components_panel_item-1 are aligned vertically above each other with 0px margin
+        | panel_tab.tab_item-* are aligned horizontally next to each other with -1px margin
+        | components_panel_item-2, components_panel_item-3, components_panel_item-4, components_panel_item-5, components_panel_item-6 are aligned vertically above each other with 1px margin
+
+        panel_tab.tab_item-1, panel_tab.tab_item-2:
+            height 48px
+
+        panel_tab:
+            height 50px
+            inside sidebar 1px left, 0px top right
+
+        panel_tab, components_panel_item-1, components_panel_item-2, components_panel_item-3, components_panel_item-4, components_panel_item-5, components_panel_item-6:
+            centered horizontally inside sidebar 1px
+
+        components_panel_item-1, components_panel_item-2, components_panel_item-3, components_panel_item-4, components_panel_item-5, components_panel_item-6:
+            height 47px
+            inside sidebar 1px left, 0px right
+
+        components_panel_item-1:
+            above components_panel_item-2
+
+        panel_tab.tab_item-1:
+            inside panel_tab 2px bottom, 0px top left
+
+        panel_tab.tab_item-2:
+            inside panel_tab 2px bottom, 0px top, >= 0px left
+            width 61px

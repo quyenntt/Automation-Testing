@@ -1,0 +1,412 @@
+@import ../galen-extras/galen-extras-rules.gspec 
+
+@objects
+    heading_inline_title           .wp-heading-inline
+    search_box                     .search-box
+        label                           .search-box .screen-reader-text
+        textfield                       #tag-search-input
+        button                          #search-submit.button
+    form_wrap_title                .form-wrap h2
+    form_add                       #addtag
+        term_name_wrap                  .term-name-wrap
+            label                           .term-name-wrap label
+            textfield                       #tag-name
+            caption                         .term-name-wrap p
+        term_slug_wrap                  .term-slug-wrap
+            label                           .term-slug-wrap label
+            textfield                       #tag-slug
+            caption                         .term-slug-wrap p
+        term_parent_wrap                .term-parent-wrap
+            label                           .term-parent-wrap label
+            combobox                        #parent
+            caption                         .term-parent-wrap p
+        term_description_wrap           .term-description-wrap
+            label                           .term-description-wrap label
+            combobox                        #tag-description
+            caption                         .term-description-wrap p
+        add_new_category_button         #submit
+    bulk_actions_top               .tablenav.top .bulkactions
+        combobox                        #bulk-action-selector-top
+        button                          #doaction 
+    bulk_actions_bottom            .tablenav.bottom .bulkactions 
+        combobox                        #bulk-action-selector-bottom 
+        button                          #doaction2   
+    table                          .wp-list-table
+        checkbox                        #cb
+        column_name                     #name a span:nth-child(1)
+        column_description              #description a span:nth-child(1)
+        column_slug                     #slug a span:nth-child(1)
+        column_count                    #posts a span:nth-child(1)
+
+= Skeleton =
+    @on mobile, tablet
+        | form_wrap_title, form_add are aligned vertically above each other with 13px margin
+        | form_add, table are aligned vertically above each other with 43px margin
+
+        bulk_actions_bottom:
+            above search_box 31px
+            below table 15px
+            height 40px
+
+        form_wrap_title:
+            below heading_inline_title 23px
+            height 18px
+
+        form_wrap_title, form_add, table:
+            inside screen 12px right, 10px left
+
+        heading_inline_title, bulk_actions_bottom:
+            inside screen 10px left, >= 9px right
+
+        heading_inline_title:
+            height 42px
+
+        search_box.label:
+            inside screen 9px left, >= 20px bottom, >= 9px right
+            
+    @on mobile
+        search_box:
+            centered horizontally inside screen 1px
+            height 90px
+            inside screen 9px right, 20px bottom, 10px left
+
+    @on tablet
+        search_box:
+            centered horizontally inside screen 1px
+            height 90px
+            inside screen 11px right, 20px bottom, 10px left
+
+    @on desktop
+        | form_wrap_title, form_add are aligned vertically above each other with 13px margin
+        
+        bulk_actions_top:
+            above table 8px
+            right-of form_wrap_title 11px
+
+        bulk_actions_bottom:
+            below table 6px
+
+        bulk_actions_top, bulk_actions_bottom:
+            height 32px
+
+        form_wrap_title:
+            below heading_inline_title 40px
+            height 18px
+
+        form_add:
+            left-of table 11px
+
+        bulk_actions_top, bulk_actions_bottom, search_box.label:
+            inside screen >= 20px right
+
+        heading_inline_title:
+            height 42px
+            left-of search_box.label
+
+        heading_inline_title, form_wrap_title, form_add:
+            inside screen
+
+        table:
+            inside screen 21px right
+
+        search_box:
+            above table 46px
+            below search_box.label 0px
+            height 28px
+            inside screen 20px right
+
+= form_add elements =
+    @on mobile, tablet
+        | form_add.term_name_wrap, form_add.term_slug_wrap, form_add.term_parent_wrap, form_add.term_description_wrap are aligned vertically above each other with 13px margin
+
+        form_add.term_parent_wrap.label, form_add.term_parent_wrap.caption:
+            centered horizontally inside form_add.term_parent_wrap 1px
+
+        form_add.term_description_wrap.label:
+            inside form_add.term_description_wrap 0px top left right
+
+        form_add.term_slug_wrap.label:
+            inside form_add.term_slug_wrap 0px top left right
+
+        form_add.term_parent_wrap.label:
+            inside form_add.term_parent_wrap 0px top left right
+
+        form_add.add_new_category_button:
+            height 33px
+            inside form_add 24px bottom, 0px left, >= 0px right
+
+        form_add.term_parent_wrap.caption:
+            inside form_add.term_parent_wrap 0px left right bottom
+
+        form_add.term_name_wrap.label, form_add.term_name_wrap.caption:
+            centered horizontally inside form_add.term_name_wrap 1px
+
+        form_add.term_slug_wrap.caption:
+            inside form_add.term_slug_wrap 0px left right bottom
+
+        form_add.term_parent_wrap.combobox:
+            above form_add.term_parent_wrap.caption 3px
+            below form_add.term_parent_wrap.label 1px
+            height 36px
+            inside form_add.term_parent_wrap 4px right, 1px left
+
+        form_add.term_name_wrap.textfield, form_add.term_slug_wrap.textfield:
+            height 35px
+
+        form_add.term_slug_wrap, form_add.term_parent_wrap, form_add.term_description_wrap:
+            inside form_add 0px left right
+
+        form_add.term_description_wrap.caption:
+            inside form_add.term_description_wrap 0px left right bottom
+
+        form_add.term_slug_wrap.caption, form_add.term_parent_wrap.caption:
+            height 38px
+
+        form_add.term_name_wrap.caption, form_add.term_description_wrap.caption:
+            height 19px
+
+        form_add.term_slug_wrap.label, form_add.term_slug_wrap.caption:
+            centered horizontally inside form_add.term_slug_wrap 1px
+
+        form_add.term_description_wrap.label, form_add.term_description_wrap.caption:
+            centered horizontally inside form_add.term_description_wrap 1px
+
+        form_add.term_name_wrap.label, form_add.term_slug_wrap.label, form_add.term_parent_wrap.label, form_add.term_description_wrap.label:
+            height 22px
+
+        form_add.term_name_wrap:
+            height 80px
+            inside form_add 0px top left right
+
+        form_add.term_description_wrap:
+            above form_add.add_new_category_button 13px
+
+        form_add.term_name_wrap.caption:
+            below form_add.term_name_wrap.textfield 3px
+            inside form_add.term_name_wrap 0px left right bottom
+
+        form_add.term_name_wrap, form_add.term_slug_wrap, form_add.term_parent_wrap, form_add.term_description_wrap:
+            centered horizontally inside form_add 1px
+
+        form_add.term_name_wrap.label:
+            inside form_add.term_name_wrap 0px top left right
+
+    @on mobile
+        form_add.term_name_wrap.textfield:
+            below form_add.term_name_wrap.label 1px
+            inside form_add.term_name_wrap 22px right, 1px left
+        form_add.term_slug_wrap.textfield:
+            above form_add.term_slug_wrap.caption 3px
+            below form_add.term_slug_wrap.label 1px
+            inside form_add.term_slug_wrap 22px right, 1px left
+        form_add.term_description_wrap.combobox:
+            above form_add.term_description_wrap.caption 6px
+            below form_add.term_description_wrap.label 0px
+            inside form_add.term_description_wrap 23px right, 0px left
+
+    @on tablet
+        form_add.term_name_wrap.textfield:
+            below form_add.term_name_wrap.label 1px
+            inside form_add.term_name_wrap 26px right, 1px left
+        form_add.term_slug_wrap.textfield:
+            above form_add.term_slug_wrap.caption 3px
+            below form_add.term_slug_wrap.label 1px
+            inside form_add.term_slug_wrap 26px right, 1px left
+        form_add.term_description_wrap.combobox:
+            above form_add.term_description_wrap.caption 6px
+            below form_add.term_description_wrap.label 0px
+            inside form_add.term_description_wrap 27px right, 0px left
+
+    @on desktop
+        | form_add.term_name_wrap, form_add.term_slug_wrap, form_add.term_parent_wrap, form_add.term_description_wrap are aligned vertically above each other with 13px margin
+
+        form_add.term_parent_wrap.combobox, form_add.add_new_category_button:
+            height 28px
+
+        form_add.term_parent_wrap.label, form_add.term_parent_wrap.caption:
+            centered horizontally inside form_add.term_parent_wrap 1px
+
+        form_add.term_description_wrap.label:
+            inside form_add.term_description_wrap 0px top left right
+
+        form_add.term_slug_wrap.label:
+            inside form_add.term_slug_wrap 0px top left right
+
+        form_add.term_parent_wrap.label:
+            inside form_add.term_parent_wrap 0px top left right
+
+        form_add.add_new_category_button:
+            inside form_add 0px left, 20px bottom, >= 0px right
+
+        form_add.term_parent_wrap.caption:
+            height 76px
+            inside form_add.term_parent_wrap 0px left right bottom
+
+        form_add.term_name_wrap.textfield:
+            below form_add.term_name_wrap.label 1px
+            inside form_add.term_name_wrap 14px right, 1px left
+
+        form_add.term_slug_wrap.label, form_add.term_slug_wrap.caption:
+            centered horizontally inside form_add.term_slug_wrap 1px
+
+        form_add.term_name_wrap.label, form_add.term_name_wrap.caption:
+            centered horizontally inside form_add.term_name_wrap 1px
+
+        form_add.term_description_wrap.label, form_add.term_description_wrap.caption:
+            centered horizontally inside form_add.term_description_wrap 1px
+
+        form_add.term_slug_wrap.caption:
+            height 57px
+            inside form_add.term_slug_wrap 0px left right bottom
+
+        form_add.term_name_wrap.label, form_add.term_slug_wrap.label, form_add.term_parent_wrap.label, form_add.term_description_wrap.label:
+            height 22px
+
+        form_add.term_parent_wrap.combobox:
+            above form_add.term_parent_wrap.caption 3px
+            below form_add.term_parent_wrap.label 1px
+            inside form_add.term_parent_wrap 1px left, >= 0px right
+
+        form_add.term_slug_wrap.textfield:
+            above form_add.term_slug_wrap.caption 3px
+            below form_add.term_slug_wrap.label 1px
+            inside form_add.term_slug_wrap 14px right, 1px left
+
+        form_add.term_name_wrap:
+            height 72px
+            inside form_add 0px top left right
+
+        form_add.term_description_wrap.combobox:
+            above form_add.term_description_wrap.caption 6px
+            below form_add.term_description_wrap.label 0px
+            inside form_add.term_description_wrap 15px right, 0px left
+
+        form_add.term_description_wrap:
+            above form_add.add_new_category_button 13px
+
+        form_add.term_name_wrap.caption:
+            below form_add.term_name_wrap.textfield 3px
+            height 19px
+            inside form_add.term_name_wrap 0px left right bottom
+
+        form_add.term_name_wrap, form_add.term_slug_wrap, form_add.term_parent_wrap, form_add.term_description_wrap:
+            centered horizontally inside form_add 1px
+
+        form_add.term_name_wrap.textfield, form_add.term_slug_wrap.textfield:
+            height 27px
+
+        form_add.term_slug_wrap, form_add.term_parent_wrap, form_add.term_description_wrap:
+            inside form_add 0px left right
+
+        form_add.term_name_wrap.label:
+            inside form_add.term_name_wrap 0px top left right
+
+        form_add.term_description_wrap.caption:
+            height 38px
+            inside form_add.term_description_wrap 0px left right bottom
+
+= bulk_actions_top elements =
+    @on desktop
+        | bulk_actions_top.combobox, bulk_actions_top.button are aligned horizontally next to each other with 6px margin
+
+        bulk_actions_top.button:
+            inside bulk_actions_top 3px top, 16px right, 1px bottom
+            width 55px
+
+        bulk_actions_top.combobox:
+            inside bulk_actions_top 3px top, 1px left bottom
+
+        bulk_actions_top.combobox, bulk_actions_top.button:
+            height 28px
+
+= table elements =
+    @on mobile, tablet
+        table.checkbox:
+            height 44px
+            inside table 1px top left
+            left-of table.column_name 8px
+            width 33px
+
+        table.column_name:
+            height 19px
+            inside table 13px top
+            width 37px
+
+    @on desktop
+        table.checkbox:
+            height 36px
+            inside table 1px top left
+            left-of table.column_name 8px
+            width 33px
+
+        table.column_name:
+            left-of table.column_description
+
+        table.column_description:
+            left-of table.column_slug
+            width 70px
+
+        table.column_name, table.column_description, table.column_slug:
+            inside table 9px top
+
+        table.column_name, table.column_description, table.column_slug, table.column_count:
+            height 19px
+
+        table.column_name, table.column_count:
+            width 37px
+
+        table.column_slug:
+            left-of table.column_count
+            width 27px
+
+        table.column_count:
+            inside table 30px right, 9px top
+
+= bulk_actions_bottom elements =
+    @on mobile, tablet
+        bulk_actions_bottom.button:
+            height 33px
+            inside bulk_actions_bottom 4px bottom, 3px top, 16px right
+            right-of bulk_actions_bottom.combobox 6px
+            width 66px
+
+        bulk_actions_bottom.combobox:
+            height 36px
+            inside bulk_actions_bottom 3px top, 1px left bottom
+
+    @on desktop
+        | bulk_actions_bottom.combobox, bulk_actions_bottom.button are aligned horizontally next to each other with 6px margin
+
+        bulk_actions_bottom.button:
+            inside bulk_actions_bottom 3px top, 16px right, 1px bottom
+            width 55px
+
+        bulk_actions_bottom.combobox:
+            inside bulk_actions_bottom 3px top, 1px left bottom
+
+        bulk_actions_bottom.combobox, bulk_actions_bottom.button:
+            height 28px
+
+= search_box elements =
+    @on mobile, tablet
+        search_box.button:
+            below search_box.textfield 10px
+            height 33px
+            inside search_box 12px bottom, 0px left, >= 0px right
+
+        search_box.textfield:
+            centered horizontally inside search_box 1px
+            height 35px
+            inside search_box 0px top left right
+
+    @on desktop
+        | search_box.textfield, search_box.button are aligned horizontally next to each other with 4px margin
+
+        search_box.button:
+            inside search_box 0px top right bottom
+
+        search_box.textfield, search_box.button:
+            height 28px
+
+        search_box.textfield:
+            inside search_box 0px top left bottom

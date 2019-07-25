@@ -1,0 +1,117 @@
+@objects
+    logo                    #login h1 a
+    form                    #loginform
+        username_label           p label[for="user_login"]
+        username_textfield       #user_login
+        password_label           p label[for="user_pass"]
+        password_textfield       #user_pass
+        remember_me_label        p label[for="rememberme"]
+        remember_me_checkbox     #rememberme
+        login_button             #wp-submit
+    lost_password_link      #nav a
+    back_to_blog_link       #backtoblog a
+
+@set
+    username_label_text          Username or Email Address
+    password_label_text          Password
+    remember_me_text             Remember Me
+    lost_password_text           Lost your password?
+    back_to_blog_text            ← Back to Store Front Website
+
+@groups
+    user_input                   form.username_textfield, form.password_textfield
+    
+= Form =
+    @on mobile
+        form.username_label:
+            css font-size is "14px"
+            color-scheme ~88% white-gray
+            text is "${username_label_text}" 
+
+        form.password_label:
+            css font-size is "14px"
+            color-scheme ~98% white-gray
+            text is "${password_label_text}"
+
+        form.remember_me_label:
+            css font-size is "12px"
+            color-scheme 76% white-gray
+            text is "${remember_me_text}"
+
+        &user_input:
+            width 272px 
+            height 40px
+
+        form.username_textfield:
+            above form.password_textfield 40 to 45 px
+
+        form.password_textfield:
+            below form.username_textfield 40 to 45 px 
+
+        form.remember_me_checkbox:
+            width 25px 
+            height 25px
+            near form.login_button 178px left 
+
+        form.login_button:
+            width 69px 
+            height 33px
+
+        lost_password_link:
+            text is "${lost_password_text}"
+
+        backto_store_link:
+            text is "${backto_store_text}"
+
+        logo:
+            visible 
+            width 84px 
+            height 84px
+            above form 20 to 30 px
+            
+    @on desktop, tablet
+        form.username_label:
+            css font-size is "14px"
+            color-scheme ~88% white-gray
+            text is "${username_label_text}" 
+
+        form.password_label:
+            css font-size is "14px"
+            color-scheme ~98% white-gray
+            text is "${password_label_text}"
+
+        form.remember_me_label:
+            css font-size is "12px"
+            color-scheme 73% white-gray
+            text is "${remember_me_text}"
+
+        &user_input:
+            width 272px 
+            height 40px
+
+        form.username_textfield:
+            above form.password_textfield 40 to 45 px
+
+        form.password_textfield:
+            below form.username_textfield 40 to 45 px 
+
+        form.remember_me_checkbox:
+            width 16px 
+            height 16px
+            near form.login_button 194px left 
+
+        form.login_button:
+            width ~60px 
+            height 30px
+
+        lost_password_link:
+            text is "${lost_password_text}"
+
+        backto_store_link:
+            text is "${backto_store_text}"
+
+        logo:
+            visible 
+            width 84px 
+            height 84px
+            above form 20 to 30 px

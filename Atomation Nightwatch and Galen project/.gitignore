@@ -1,0 +1,7 @@
+# ignore node modules
+node_modules
+# ignore logs
+*.log
+# ignore package-lock json
+package-lock.json
+# ignore reports

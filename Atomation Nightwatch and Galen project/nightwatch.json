@@ -1,0 +1,109 @@
+{
+  "src_folders": [
+    "tests/nightwatch/categories",
+    "tests/nightwatch/posts",
+    "tests/nightwatch/tags",
+    "tests/nightwatch/users",
+    "tests/nightwatch/pages",
+    "tests/nightwatch/medias",
+    "tests/nightwatch/menus"
+  ],
+  "output_folder": "reports/nightwatch",
+  "custom_commands_path": [
+    "commons/custom-commands",
+    "commons/utils"
+  ],
+  "custom_assertions_path": "",
+  "page_objects_path": [
+    "page-objects/nightwatch/categories",
+    "page-objects/nightwatch/posts",
+    "page-objects/nightwatch/tags",
+    "page-objects/nightwatch/users",
+    "page-objects/nightwatch/pages",
+    "page-objects/nightwatch/base-objects",
+    "page-objects/nightwatch/medias",
+    "page-objects/nightwatch/menus"
+  ],
+  "globals_path": "globals.js",
+  "webdriver": {
+    "start_process": true,
+    "server_path": "libraries/drivers/chromedriver.exe",
+    "cli_args": [
+      "--log",
+      "debug"
+    ],
+    "port": 9515
+  },
+  "selenium": {
+    "start_process": true,
+    "server_path": "libraries/selenium/selenium-server-standalone-3.141.59.jar",
+    "log_path": "logs/",
+    "host": "127.0.0.1",
+    "port": 4444,
+    "cli_args": {
+      "webdriver.chrome.driver": "libraries/drivers/chromedriver.exe",
+      "webdriver.gecko.driver": "node_modules/geckodriver/geckodriver.exe",
+      "webdriver.ie.driver": "node_modules/iedriver/lib/iedriver/IEDriverServer.exe"
+    }
+  },
+  "test_workers": {
+    "enabled": true,
+    "workers": "auto"
+  },
+  "detailed_output": true,
+  "test_settings": {
+    "default": {
+      "skip_testcases_on_fail": false,
+      "launch_url": "http://192.168.189.70/wordpress/wp-login.php",
+      "selenium_port": 4444,
+      "selenium_host": "localhost",
+      "silent": true,
+      "use_xpath": true,
+      "screenshots": {
+        "enabled": true,
+        "path": "./reports/nightwatch",
+        "on_failure": true,
+        "on_error": true
+      },
+      "globals": {
+        "waitForConditionTimeout": 5000,
+        "asyncHookTimeout": 10000,
+        "abortOnAssertionFailure": true,
+        "waitForConditionPollInterval": 300,
+        "retryAssertionTimeout": 5000
+      },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "chrome": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "chromeOptions": {
+          "args": [
+            "disable-web-security",
+            "ignore-certificate-errors",
+            "--test-type"
+          ]
+        }
+      }
+    },
+    "firefox": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "marionette": true,
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "ie": {
+      "desiredCapabilities": {
+        "browserName": "internet explorer",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    }
+  }
+}
